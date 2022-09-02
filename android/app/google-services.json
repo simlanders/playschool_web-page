@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "105177709047",
+    "project_id": "playschool-fae76",
+    "storage_bucket": "playschool-fae76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105177709047:android:3eed7387d0ac27002056f2",
+        "android_client_info": {
+          "package_name": "com.example.playschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105177709047-308c4cra4duk6l3or6nuq4g0qf5e600d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF5MJu_rnghcwQQNxbCDaAK3L2Fc6iJls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105177709047-308c4cra4duk6l3or6nuq4g0qf5e600d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
