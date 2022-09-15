@@ -26,10 +26,15 @@ class Staff_Page extends StatelessWidget {
           color: Colors.green,
           child: GridView.builder(
             //controller: scrollController,
-            itemCount: 25,
+            itemCount: 11,
             itemBuilder: (BuildContext context, int index) {
-              return StaffContainerWidget(image:null,
-                  name: 'Simeon Landers', gradeLevel: '8-12', email: 'poeeeeeeeetic.sim20@gmail.com', position: 'Director',);
+              return StaffContainerWidget(
+                image: null,
+                name: 'Simeon Landers',
+                gradeLevel: '8-12',
+                email: 'poeeeeeeeetic.sim20@gmail.com',
+                position: 'Director',
+              );
             },
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisSpacing: 10,

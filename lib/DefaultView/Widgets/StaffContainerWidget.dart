@@ -32,10 +32,10 @@ class StaffContainerWidget extends StatelessWidget {
 
     return Container(
       width: (w / 3),
-      height: (h - 128) ,
+      height: (h - 128),
       color: Colors.blue,
-      child: Column(children:[
-Row(
+      child: Column(children: [
+        Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -57,7 +57,8 @@ Row(
                       style: TextStyle(
                           fontSize: 15,
                           color: Colors.black,
-                          decoration: TextDecoration.none),textAlign: TextAlign.left,
+                          decoration: TextDecoration.none),
+                      textAlign: TextAlign.left,
                     ),
                     Text(
                       name,
@@ -108,32 +109,31 @@ Row(
                     ),
                   ],
                 ),
-                
               ],
             ),
           ],
         ),
         Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Email: ',
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          decoration: TextDecoration.none),
-                    ),
-                    Text(
-                      email,
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          decoration: TextDecoration.none),
-                    ),
-                  ],
-                ),
-      
-    ]),);
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Email: ',
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  decoration: TextDecoration.none),
+            ),
+            Text(
+              email,
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  decoration: TextDecoration.none),
+            ),
+          ],
+        ),
+      ]),
+    );
   }
 }

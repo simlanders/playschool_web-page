@@ -90,7 +90,7 @@ class TabWidget extends StatelessWidget {
             new GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => Staff_Page()));
+                    MaterialPageRoute(builder: (context) => Image_Picker()));
               },
               child: new Text("Admin-Login",
                   style: TextStyle(
