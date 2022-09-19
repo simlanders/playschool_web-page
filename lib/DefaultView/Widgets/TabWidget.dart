@@ -3,6 +3,7 @@ import 'package:playschool/DefaultView/Pages/D_Contact_Page.dart';
 import 'package:playschool/DefaultView/Pages/Enroll_page.dart';
 import 'package:playschool/DefaultView/Pages/Staff_Page.dart';
 
+import '../Pages/Add_Selector_Page.dart';
 import '../Pages/D_Home.dart';
 import '../Pages/Image_Picker.dart';
 
@@ -90,7 +91,7 @@ class TabWidget extends StatelessWidget {
             new GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => Image_Picker()));
+                    MaterialPageRoute(builder: (context) => Add_Selector_Page()));
               },
               child: new Text("Admin-Login",
                   style: TextStyle(
