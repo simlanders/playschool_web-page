@@ -22,7 +22,9 @@ class Image_Picker extends StatefulWidget {
 
   final String? name;
 
-  final String? age_group;
+  final String? start_age_group;
+
+  final String? end_age_group;
 
   final String? position;
 
@@ -32,7 +34,8 @@ class Image_Picker extends StatefulWidget {
 
   Image_Picker(
       {required this.folder,
-      required this.age_group,
+      required this.start_age_group,
+      required this.end_age_group,
       required this.position,
       required this.name,
       required this.email});
@@ -48,9 +51,7 @@ class _Image_PickerState extends State<Image_Picker> {
     _pickFile();
 
     return TextButton(
-      onPressed: () {
-        
-      },
+      onPressed: () {},
       child: Text(''),
     );
   }
@@ -76,6 +77,7 @@ class _Image_PickerState extends State<Image_Picker> {
   }
 
   leave() {
+    
     if (widget.folder == 'homePics/') {
       return Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => Add_Home_Pics_Page()));
@@ -84,11 +86,12 @@ class _Image_PickerState extends State<Image_Picker> {
           context,
           MaterialPageRoute(
               builder: (context) => Add_Staff_Page(
-                    age_group: widget.age_group,
                     email: widget.email,
                     name: widget.name,
                     position: widget.position,
                     url: widget.url,
+                    end_age_group: widget.end_age_group,
+                    start_age_group: widget.start_age_group,
                   )));
     } else {
       return Navigator.pushReplacement(

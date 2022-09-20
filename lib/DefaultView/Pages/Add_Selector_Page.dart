@@ -20,7 +20,7 @@ class Add_Selector_Page extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Add_Staff_Page(age_group: '', email: '', name: '', position: '', url: '',)));
+                          builder: (context) => Add_Staff_Page(email: '', name: '', position: '', url: '', end_age_group: '', start_age_group: '',)));
                 },
                 child: Text("STAFF", style: TextStyle(fontSize: 25, color: Colors.amber),),
                 style: ButtonStyle(
