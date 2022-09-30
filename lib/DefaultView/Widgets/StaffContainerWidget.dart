@@ -27,7 +27,7 @@ class StaffContainerWidget extends StatelessWidget {
     final double h = MediaQuery.of(context).size.height;
 
     if (image == null) {
-      image = "images/photo-coming-soon-002.jpg";
+      image = 'gs://playschool-fae76.appspot.com/staffPics/photo-coming-soon-002.jpg';
     }
 
     return Container(
@@ -35,21 +35,21 @@ class StaffContainerWidget extends StatelessWidget {
       height: (h - 128),
       color: Colors.blue,
       child: Column(children: [
+        //Picture
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: (((h - 128) / 1.5))),
-            Image.asset(
-              image!,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //SizedBox(height: (((h - 100)/2 ))),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+            //SizedBox(height: (((h - 128) / 1.5))),
+            Image.network(
+          image!,
+          width: (w/3)-7,height:(((h - 128) / 1.5))/2 ,),
+            
+          ],
+        ),
+        //Name
+        Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -69,52 +69,51 @@ class StaffContainerWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Age Group:',
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          decoration: TextDecoration.none),
-                    ),
-                    Text(
-                      gradeLevel,
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          decoration: TextDecoration.none),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Postion: ',
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          decoration: TextDecoration.none),
-                    ),
-                    Text(
-                      position,
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          decoration: TextDecoration.none),
-                    ),
-                  ],
-                ),
-              ],
+        //AgeGroup
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Age Group:',
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  decoration: TextDecoration.none),
+            ),
+            Text(
+              gradeLevel,
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  decoration: TextDecoration.none),
             ),
           ],
         ),
+        //Position
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Postion: ',
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  decoration: TextDecoration.none),
+            ),
+            Text(
+              position,
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  decoration: TextDecoration.none),
+            ),
+          ],
+        ),
+        //Email
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(

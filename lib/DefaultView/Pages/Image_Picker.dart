@@ -71,17 +71,17 @@ class _Image_PickerState extends State<Image_Picker> {
         widget.url = await imagesRef.getDownloadURL().whenComplete(() async {
           leave();
         });
-        //print(widget.url);
+        
       });
     });
   }
 
   leave() {
-    
     if (widget.folder == 'homePics/') {
       return Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => Add_Home_Pics_Page()));
     } else if (widget.folder == 'staffPics/') {
+      
       return Navigator.pushReplacement(
           context,
           MaterialPageRoute(

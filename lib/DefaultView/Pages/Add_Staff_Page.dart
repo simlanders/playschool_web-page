@@ -1,7 +1,11 @@
+import 'dart:html';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:playschool/DefaultView/Pages/Image_Picker.dart';
+import 'package:playschool/DefaultView/Pages/Update_Staff_Rank.dart';
 
+import '../../Global_Classes.dart/Database.dart';
 import '../Widgets/TabWidget.dart';
 
 class Add_Staff_Page extends StatefulWidget {
@@ -54,14 +58,22 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
   late TextEditingController _email;
   late String dropdownValue;
   late String dropdownValue2;
+  final DatabaseService db = new DatabaseService();
+  late var photoss;
+  List people = [];
+  bool isVisable = false;
 
-  
   @override
   initState() {
     super.initState();
     _name = TextEditingController(text: widget.name);
     _position = TextEditingController(text: widget.position);
     _email = TextEditingController(text: widget.email);
+    photoss = db.photos.first.then((value) {
+      for (var p in value) {
+        people.add(p.name);
+      }
+    });
 
     if (widget.url == '') {
       widget.url =
@@ -77,7 +89,6 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
     } else {
       dropdownValue2 = widget.end_age_group!;
     }
-    
   }
 
   @override
@@ -107,7 +118,6 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
                   ),
                   OutlinedButton(
                       onPressed: () {
-                        
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -155,7 +165,6 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
                                     fontSize: 30, color: Colors.greenAccent),
                               ),
                               TextFormField(
-                                
                                 controller: _name,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -164,16 +173,13 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
                                         fontSize: 20, color: Colors.black)),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return "PassWord can not be empty";
+                                    return "Name can not be empty";
                                   }
-                                  if (value.length < 4) {
-                                    return "Password too Short ";
-                                  }
+
                                   return null;
                                 },
                               ),
                               TextFormField(
-                                
                                 controller: _email,
                                 decoration: InputDecoration(
                                     labelText: "Email",
@@ -190,7 +196,6 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
                                 },
                               ),
                               TextFormField(
-                               
                                 controller: _position,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -199,11 +204,9 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
                                         fontSize: 20, color: Colors.black)),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return "PassWord can not be empty";
+                                    return "Staff position can not be empty";
                                   }
-                                  if (value.length < 4) {
-                                    return "Password too Short ";
-                                  }
+
                                   return null;
                                 },
                               ),
@@ -271,10 +274,40 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
                                     OutlinedButton(
                                         onPressed: () {
                                           if (_formKey.currentState!
-                                              .validate()) {}
+                                              .validate()) {
+                                            if (checkForduplicates() == false) {
+                                              db.addStaffPhoto(
+                                                  _name.text,
+                                                  _email.text,
+                                                  _position.text,
+                                                  widget.url!,
+                                                  dropdownValue,
+                                                  dropdownValue2,
+                                                  '100');
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Update_Staff_Rank()));
+                                            } else {
+                                              setState(() {
+                                                isVisable = true;
+                                              });
+                                              
+                                              print('Cant leave page');
+                                            }
+                                          }
                                         },
                                         child: Text("Submit")),
                                   ]),
+                              Visibility(
+                                visible: isVisable,
+                                child: const Text(
+                                  'This staff member name is already in our system.',
+                                  style: TextStyle(
+                                      fontSize: 25, color: Colors.red),
+                                ),
+                              ),
                             ],
                           ))),
                 ),
@@ -282,5 +315,16 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
             ),
           ],
         ));
+  }
+
+  bool checkForduplicates() {
+    bool result = false;
+
+    if (people.contains(_name.text)) {
+      result = true;
+      
+    }
+
+    return result;
   }
 }
