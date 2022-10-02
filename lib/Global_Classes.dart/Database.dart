@@ -15,12 +15,14 @@ class DatabaseService {
 
   final StreamController<List<Photo_Blueprint>> _staff_Photo_Controller =
       StreamController<List<Photo_Blueprint>>();
+  final List url = [];
 
   DatabaseService() {
     _firestore.collection('staff').snapshots().listen(_staff_Photo_Updated);
   }
 
-  Stream<List<Photo_Blueprint>> get photos => _staff_Photo_Controller.stream;
+  Stream<List<Photo_Blueprint>> get staff_photos =>
+      _staff_Photo_Controller.stream;
 
   void _staff_Photo_Updated(QuerySnapshot<Map<String, dynamic>> snapshot) {
     List<Photo_Blueprint> photos = _getstaffPhotosFromSnapshot(snapshot);
@@ -35,6 +37,7 @@ class DatabaseService {
           Photo_Blueprint.fromMap(element.id, element.data());
 
       photos.add(photo);
+      
     }
     photos.sort((a, b) => a.order_number.compareTo(b.order_number));
     return photos;

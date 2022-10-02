@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: FutureBuilder(
@@ -42,12 +41,12 @@ class MyApp extends StatelessWidget {
                   "Ooops an Error has Happened " + snapshot.error.toString()),
             );
           }
-          if (snapshot.connectionState != ConnectionState.waiting) {
+          if (snapshot.connectionState == ConnectionState.done) {
             final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-            return Loading();
+            return MyHomePage();
           }
 
-          return MyHomePage();
+          return Loading();
         },
       ),
     );
@@ -86,7 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       }
       // ignore: empty_catches
-    } catch (e) {}
-    return const Text("Error Sizing page");
+    } catch (e) {
+      return const Text("Error Sizing page");
+    }
+    return Loading();
   }
 }

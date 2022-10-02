@@ -69,7 +69,7 @@ class _Add_Staff_Page_State extends State<Add_Staff_Page> {
     _name = TextEditingController(text: widget.name);
     _position = TextEditingController(text: widget.position);
     _email = TextEditingController(text: widget.email);
-    photoss = db.photos.first.then((value) {
+    photoss = db.staff_photos.first.then((value) {
       for (var p in value) {
         people.add(p.name);
       }

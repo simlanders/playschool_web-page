@@ -32,7 +32,7 @@ class StaffContainerWidget extends StatelessWidget {
 
     return Container(
       width: (w / 3),
-      height: (h - 128),
+      height: (h - 100),
       color: Colors.blue,
       child: Column(children: [
         //Picture
@@ -43,7 +43,7 @@ class StaffContainerWidget extends StatelessWidget {
             //SizedBox(height: (((h - 128) / 1.5))),
             Image.network(
           image!,
-          width: (w/3)-7,height:(((h - 128) / 1.5))/2 ,),
+          width: (w/3)-7,height:(((h - 128) / 1.5))/1.5 ,),
             
           ],
         ),

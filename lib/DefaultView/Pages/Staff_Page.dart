@@ -29,7 +29,7 @@ class Staff_Page extends StatelessWidget {
           height: (Height - 114),
           color: Colors.green,
           child: StreamBuilder<List<Photo_Blueprint>>(
-              stream: db.photos,
+              stream: db.staff_photos,
               builder: (BuildContext context,
                   AsyncSnapshot<List<Photo_Blueprint>> snapshot) {
                 if (snapshot.hasError) {

@@ -40,7 +40,7 @@ class _Update_Staff_Rank_State extends State<Update_Staff_Rank> {
           children: [
             Expanded(
               child: StreamBuilder<List<Photo_Blueprint>>(
-                stream: db.photos,
+                stream: db.staff_photos,
                 builder: (BuildContext context,
                     AsyncSnapshot<List<Photo_Blueprint>> snapshot) {
                   if (snapshot.hasError) {
