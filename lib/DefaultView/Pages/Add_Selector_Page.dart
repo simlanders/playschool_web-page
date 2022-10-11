@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:playschool/DefaultView/Pages/Add_Home_Pics_Page.dart';
 import 'package:playschool/DefaultView/Pages/Add_Staff_Page.dart';
+import 'package:playschool/DefaultView/Pages/Update_Staff_Rank.dart';
 
 import '../Widgets/TabWidget.dart';
 
@@ -48,6 +49,21 @@ class Add_Selector_Page extends StatelessWidget {
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                             side: BorderSide(color: Colors.red))))),
+            Text('delete'),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Update_Staff_Rank()));
+                },
+                child: Text("Staff", style: TextStyle(fontSize: 25, color: Colors.amber),),
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red))))),
+          
           ],
         ),
       ),

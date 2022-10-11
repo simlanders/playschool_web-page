@@ -39,14 +39,14 @@ class DatabaseService {
       photos.add(photo);
       
     }
-    photos.sort((a, b) => a.order_number.compareTo(b.order_number));
+    photos.sort((a, b) => int.parse(a.order_number).compareTo(int.parse(b.order_number)));
     return photos;
   }
 
-  void addlikes(String uid, String likes) async {
-    final data = {"likes": likes};
+  void updateOrder_Number(String uid, String likes) async {
+    final data = {"order_number": likes};
 
-    _firestore.collection("posts").doc(uid).set(data, SetOptions(merge: true));
+    _firestore.collection("staff").doc(uid).set(data, SetOptions(merge: true));
   }
 
   Future<void> addStaffPhoto(
